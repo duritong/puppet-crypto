@@ -6,9 +6,9 @@ modules_dir { "crypto": }
 
 class crypto {
         case $operatingsystem {
-                centos: { $luks = "true" }
-                gentoo: { $luks = "true" }
-                default: { $luks = "false" }
+                centos: { $luks = true }
+                gentoo: { $luks = true }
+                default: { $luks = false }
         }
 
         if $luks {
