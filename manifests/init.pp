@@ -8,7 +8,7 @@ class crypto {
         case $operatingsystem {
                 centos: { $luks = true }
                 gentoo: { $luks = true }
-                default: { $luks = false }
+                default: { }
         }
 
         if $luks {
