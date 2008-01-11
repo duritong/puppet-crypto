@@ -2,7 +2,7 @@
 # Copyright (C) 2007 admin@immerda.ch
 #
 
-modules_dir { "crypto": }
+#modules_dir { "crypto": }
 
 class crypto {
         case $operatingsystem {
