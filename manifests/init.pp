@@ -5,20 +5,23 @@
 #modules_dir { "crypto": }
 
 class crypto {
-        case $operatingsystem {
-                centos: { $luks = true }
-                gentoo: { $luks = true }
-                default: { }
+        case $kernel {
+                linux: { include crypto::luks }
+                openbsd: { include crypto::openbsd }
         }
+}
 
-        if $luks {
-                package { 'cryptsetup-luks':
-                        ensure => present,
-                        category => $operatingsystem ? {
-                                gentoo => 'sys-fs',
-                                default => '',
-                        },
-                }
-        }
+class crypto::luks {
+    package { 'cryptsetup-luks':
+        ensure => present,
+        category => $operatingsystem ? {
+            gentoo => 'sys-fs',
+            default => '',
+        },
+    }
+}
+
+class crypto::openbsd {
+    sysctl::set_value{"vm.swapencrypt.enable": value => "1"}
 }
 
