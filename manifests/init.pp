@@ -14,7 +14,8 @@ class crypto {
 class crypto::luks {
     package { 'cryptsetup-luks':
         name => $operatingsystem ? {
-            debian,ubuntu => 'cryptsetup',
+            debian => 'cryptsetup',
+            ubuntu => 'cryptsetup',
             default => 'cryptsetup-luks',
         },
         ensure => present,
