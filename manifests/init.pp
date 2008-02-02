@@ -24,15 +24,6 @@ class crypto::luks {
             default => '',
         },
     }
-
-
-    case $operatingsystem {
-        debian,ubuntu: {
-            Package{cryptsetup-luks:
-                name => 'cryptsetup',
-            }
-        }
-    }
 }
 
 class crypto::openbsd {
