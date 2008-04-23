@@ -12,12 +12,7 @@ class crypto {
 }
 
 class crypto::luks {
-    package{cryptsetup-luks:
-        name => $operatingsystem ? {
-            debian => 'cryptsetup',
-            ubuntu => 'cryptsetup',
-            default => 'cryptsetup-luks',
-        },
+    package{cryptsetup:
         ensure => present,
         category => $operatingsystem ? {
             gentoo => 'sys-fs',
