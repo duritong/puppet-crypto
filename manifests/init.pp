@@ -8,10 +8,14 @@
 
 class crypto {
     case $operatingsystem {
-        centos: { include crypto::luks::centos }
-        gentoo: { include crypto::luks::gentoo }
+        centos: { include crypto::linux::centos }
+        gentoo: { include crypto::linux::gentoo }
         openbsd: { include crypto::openbsd }
-        default: { include crypto::luks::base }
+        default: { 
+            case $kernel {
+                linux: { include crypto::linux::base }
+            }
+        }
     }
 }
 
