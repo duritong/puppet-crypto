@@ -1,5 +1,5 @@
 class crypto::linux::centos inherits crypto::linux::base {
-    Package[cryptsetup] {
-        name => 'cryptsetup-luks',
-    }
+  Package[cryptsetup] {
+    name => 'cryptsetup-luks',
+  }
 }
