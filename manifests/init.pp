@@ -6,7 +6,13 @@
 
 class crypto {
   case $::operatingsystem {
-    centos: { include crypto::linux::centos }
+    centos: { 
+      if $::operatingsystemmajrelease < 7 {
+        include crypto::linux::centos_before7
+      } else {
+        include crypto::linux::base
+      }
+    }
     gentoo: { include crypto::linux::gentoo }
     openbsd: { include crypto::openbsd }
     default: { 
